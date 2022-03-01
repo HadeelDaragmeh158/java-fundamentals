@@ -1,6 +1,8 @@
 import java.lang.String;
 import java.util.Random;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+
 class Main{
 
     public static void main(String[] args) {
@@ -8,11 +10,18 @@ class Main{
         flipNHeads(1);
         clock();
     }
+    /////////////////////////////////////////////////////////////////////////////////////////
+    /////////////////////////// Method pluralize  ///////////////////////////////////////////
+    /////////////////////////////////////////////////////////////////////////////////////////
     public static String pluralize(String word , int num ){
         if (num == 1 || num >0)
             return word+"s";
         else return word;
     }
+
+    /////////////////////////////////////////////////////////////////////////////////////////
+    /////////////////////////// Method flipNHeads  //////////////////////////////////////////
+    /////////////////////////////////////////////////////////////////////////////////////////
     public static void flipNHeads(int n){
         double nhead=0.0;
         int FLIPS=0,N=0;
@@ -32,23 +41,22 @@ class Main{
         }while(N<n);
         System.out.println("It took "+ FLIPS+ " flips to flip "+N+ " heads in a row.");
     }
-    public static void clock() {
-        LocalDateTime  theDate = LocalDateTime.now();
-        int hour = theDate.getHour();
-        int minute = theDate.getMinute();
-        int second = theDate.getSecond();
-        System.out.println(hour + ":" + minute + ":" + second);
+    /////////////////////////////////////////////////////////////////////////////////////////
+    /////////////////////////// Method clock  ///////////////////////////////////////////////
+    /////////////////////////////////////////////////////////////////////////////////////////
 
+    public static void clock() {
+int counter =0;
         while (true) {
-            theDate = LocalDateTime.now();
-            if (theDate.getSecond() != second) {
-                hour = theDate.getHour();
-                minute = theDate.getMinute();
-                second = theDate.getSecond();
-//                String finalDate=
-                System.out.println(hour + ":" + minute + ":" + second);
-            }}}
+            counter++;
+            LocalDateTime  theDate = LocalDateTime.now();
+            DateTimeFormatter MyFormat = DateTimeFormatter.ofPattern("HH:mm:ss");
+            String TheFormat = theDate.format(MyFormat);
+            System.out.println(TheFormat);
+        }
+    }
 }
+
 
 
 
