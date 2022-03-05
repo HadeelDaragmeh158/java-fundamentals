@@ -33,7 +33,7 @@ public class App {
     //////////////////////  Method  roll  /////////////////////////////////////////
     ///////////////////////////////////////////////////////////////////////////////
 
-    public static void roll(int n) {
+    public static int[] roll(int n) {
         int[] nArr = new int[n];
         int number;
 
@@ -41,7 +41,7 @@ public class App {
             number = 1 + (int) (Math.random() * ((6 - 1) + 1));
             nArr[i] = number;
         }
-        System.out.println(Arrays.toString(nArr));
+       return  nArr;
 
     }
 
