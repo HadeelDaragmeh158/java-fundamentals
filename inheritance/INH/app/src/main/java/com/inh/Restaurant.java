@@ -1,27 +1,28 @@
 package com.inh;
 
-
-
-import java.util.ArrayList;
 import java.util.List;
 
-public class Restaurant<setReview> {
+public class Restaurant extends Shop{
     String name ;
     int numOfStars;
     String priceCategory;
-    private final List<Review> reviews =new ArrayList<>();
 
-    Restaurant (String name, int numOfStars, String priceCategory){        this.name=name ;
+
+/////////////////////////////////////////////////////////////////////////////////
+///////////////////////// METHODS   /////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////
+
+
+
+  public   Restaurant (String name, int numOfStars, String priceCategory, String Description,int numOfDollarSigns ){
+        super(name,Description,numOfDollarSigns);
+        this.name=name ;
         this.numOfStars=numOfStars;
         this.priceCategory=priceCategory;
     }
 
     public List<Review> getListofReviewInResturant() {
-        return reviews;
-    }
-
-    public String getName() {
-        return name;
+        return getReviews();
     }
 
 
@@ -35,17 +36,17 @@ public class Restaurant<setReview> {
         return priceCategory;
     }
 
-
-    public List<Review> getReviews() {
-        return reviews;
-    }
     public void addReview (Review review) {
+        setReviews((List<Review>) review);
+    }
+    public int sumOfStars(){
+        List<Review>reviews=getListofReviewInResturant();
         int count = 0;
         for (Review rev:reviews) {
-            count = count + rev.getNumOfStars();
+            count += rev.getNumOfStars();
         }this.numOfStars = count/reviews.size();
+        return numOfStars;
     }
-
     @Override
     public String toString() {
         return "Restaurant{" +
