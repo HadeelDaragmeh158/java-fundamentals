@@ -4,10 +4,9 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class Theater {
+public class Theater extends Ecommerce{
 
-    String name ;
-    List<String> Movies = new ArrayList<>();
+    List<String> listMovies = new ArrayList<>();
 
 
 /////////////////////////////////////////////////////////////////////////////////
@@ -15,23 +14,39 @@ public class Theater {
 /////////////////////////////////////////////////////////////////////////////////
 
 
-    Theater (String name ){
-    this.name=name;
+    public Theater(String name, int numOfStars) {
+        super(name, numOfStars);
+    }
 
+    void addMovie(String movie){
+        if (listMovies.contains(movie)){
+            System.out.println("Movie already exist");
+        }
+        else { listMovies.add(movie);
+        System.out.println("The Movie "+movie+" Added. ");
+        }
     }
-    void addMovie(String Movie){
-         Movies.add(Movie);
-    //  int number = list.get(0);
-        System.out.println("The Movie "+Movie+" Added. ");
+   public void addReview(Review review, String newMovie){
+        if (!newMovie.isEmpty()){
+            review.setNewMovie(newMovie);
+        }
+       super.getReviewList().add(review);
+       super.count ++;
+       sumOfStars+=review.getNumOfStars();
+       review.setNumOfStars(sumOfStars/count);
     }
-    void removeMovie(String Movie){
-        Movies.remove(Movie);
+
+    void removeMovie(String movie){
+        listMovies.remove(movie);
     }
+
+
     @Override
     public String toString() {
         return "Theater{" +
-                "name='" + name + '\'' +
-                ", Movies=" + Movies +
+                "listMovies=" + listMovies +"\'"+
+                "name="+super.getName()+"\'"+
+                "stars"+super.getReviewList()+"\'"+
                 '}';
     }
 }
