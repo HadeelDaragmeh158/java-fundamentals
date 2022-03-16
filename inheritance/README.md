@@ -1,7 +1,7 @@
 # architecture  
-- Ecommerce is a super class of my project .
-- Shop , Restaurant ,Theater are the sub classes of Ecommerce.
-- Review is a composition with Ecommerce.
+- Ecommerce is a superclass of my project.
+- Shop, Restaurant, Theater are the subclasses of Ecommerce.
+- Review is a composition with E-commerce.
 
 
 ## Test 
