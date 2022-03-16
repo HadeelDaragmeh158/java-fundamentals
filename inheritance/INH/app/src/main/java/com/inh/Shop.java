@@ -3,41 +3,35 @@ package com.inh;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Shop {
-//should have a name, description, and number of dollar signs.
-    String name;
+public class Shop extends Ecommerce {
+
     String Description;
-    int numOfDollarSigns;
-    private final List<Review> reviews =new ArrayList<>();
+    String priceCategory;
 /////////////////////////////////////////////////////////////////////////////////
 ///////////////////////// METHODS   /////////////////////////////////////////////
 /////////////////////////////////////////////////////////////////////////////////
 
-    Shop(String name ,String Description , int numOfDollarSigns ){
-        this.Description=Description;
-        this.name=name;
-        this.numOfDollarSigns=numOfDollarSigns;
-    }
-    public void setReviews (List<Review>reviews){
-        this.reviews.add((Review) reviews);
-
-        System.out.println("Your reviews has been added ");
+    public Shop(String name, int numOfStars, String description, String  priceCategory) {
+        super(name, numOfStars);
+        Description = description;
+        this.priceCategory = priceCategory;
     }
 
-
-
-
-    public List<Review> getReviews() {
-        return reviews;
+    public String getDescription() {
+        return Description;
     }
 
+    public String getPriceCategory() {
+        return priceCategory;
+    }
 
     @Override
     public String toString() {
         return "Shop{" +
-                "name='" + name + '\'' +
-                ", Description='" + Description + '\'' +
-                ", numOfDollarSigns=" + numOfDollarSigns +
+                "Description='" + Description + '\'' +
+                "name="+super.getName()+"\'"+
+                "stars"+super.getReviewList()+"\'"+
+                ", priceCategory=" + priceCategory +
                 '}';
     }
 }
